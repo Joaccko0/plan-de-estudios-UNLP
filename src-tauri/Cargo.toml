@@ -1,25 +1,30 @@
 [package]
-name = "app"
-version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+name = "plan-estudios-unlp"
+version = "1.0.0"
+description = "Sistema de seguimiento académico para Facultad de Informática UNLP"
+authors = ["Joaquin Retamoso Doglio"]
+license = "MIT"
+repository = "https://github.com/tu-usuario/plan-estudios-unlp"
 edition = "2021"
 rust-version = "1.77.2"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
 name = "app_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
-tauri-build = { version = "2.5.1" }
+tauri-build = { version = "2.5.1", features = [] }
 
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 log = "0.4"
-tauri = { version = "2.9.1" }
+tauri = { version = "2.9.1", features = ["unstable"] }
 tauri-plugin-log = "2"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "z"
+strip = true

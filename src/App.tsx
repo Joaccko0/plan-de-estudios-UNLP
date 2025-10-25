@@ -169,6 +169,17 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>📚 Plan de Estudios Dinámico</h1>
+        <p className="author-credit">
+          Desarrollado por{" "}
+          <a 
+            href="https://www.linkedin.com/in/joaquin-rd/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Joaquin Retamoso Doglio
+          </a>
+        </p>
+        <br></br>
         <button 
           className="theme-toggle" 
           onClick={toggleTheme}
@@ -236,7 +247,20 @@ function App() {
 
       <footer className="app-footer">
         <p>💾 Tu progreso se guarda automáticamente en tu navegador</p>
-        <p>🚀 Versión 1.0.0 - Desarrollado localmente</p>
+        <p>
+          🚀 Desarrollado por{" "}
+          <a 
+            href="https://www.linkedin.com/in/joaquin-rd/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ color: 'var(--accent)', fontWeight: 'bold', textDecoration: 'none' }}
+          >
+            Joaquin Retamoso Doglio
+          </a>
+        </p>
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+          📚 Proyecto gratuito y open source para la comunidad de la Facultad de Informática - UNLP
+        </p>
       </footer>
     </div>
   );

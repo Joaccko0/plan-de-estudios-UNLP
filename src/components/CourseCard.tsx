@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { clsx } from "clsx";
 import { usePlanStore } from "../store/usePlanStore";
 import type { CourseProgress } from "../types/plan";
-import { canEnroll, canTakeFinal, getMissingPrereqs } from "../lib/elegibility";
+import { canEnroll, canTakeFinal } from "../lib/elegibility";
 import { Badge } from "./Badge";
 import { Modal } from "./Modal";
 
@@ -14,10 +14,10 @@ interface CourseCardProps {
 }
 
 export function CourseCard({ id, name, semester, year }: CourseCardProps) {
-  const { plan, progress, setCourseState, currentCareer } = usePlanStore();
+  const { plan, progress, setCourseState, currentCareer, getProgressKey } = usePlanStore();
 
   // Use the correct progress key with career prefix
-  const progressKey = currentCareer ? `${currentCareer}_${id}` : id;
+  const progressKey = getProgressKey(id);
   const courseProgress = progress[progressKey] || { state: "pending" as const };
 
   const [showModal, setShowModal] = useState(false);
@@ -33,10 +33,8 @@ export function CourseCard({ id, name, semester, year }: CourseCardProps) {
     // Create a progress map with prefixed keys for this career
     const careerProgress: Record<string, CourseProgress> = {};
     Object.keys(progress).forEach(key => {
-      if (key.startsWith(`${currentCareer}_`)) {
-        const courseId = key.replace(`${currentCareer}_`, '');
+        const courseId = key.startsWith(`${currentCareer}_`) ? key.replace(`${currentCareer}_`, '') : key;
         careerProgress[courseId] = progress[key];
-      }
     });
     return canEnroll(course, careerProgress, plan.rules.canEnrollIf.allOf.length > 0 ? "approved" : "approvedOrRegular");
   }, [plan, progress, course, currentCareer]);
@@ -45,37 +43,11 @@ export function CourseCard({ id, name, semester, year }: CourseCardProps) {
     if (!plan || !course || !currentCareer) return false;
     const careerProgress: Record<string, CourseProgress> = {};
     Object.keys(progress).forEach(key => {
-      if (key.startsWith(`${currentCareer}_`)) {
-        const courseId = key.replace(`${currentCareer}_`, '');
+        const courseId = key.startsWith(`${currentCareer}_`) ? key.replace(`${currentCareer}_`, '') : key;
         careerProgress[courseId] = progress[key];
-      }
     });
     return canTakeFinal(id, careerProgress, plan.rules.canTakeFinalIf.requireFinal || false, course);
   }, [plan, progress, id, course, currentCareer]);
-
-  const missingForEnroll = useMemo(() => {
-    if (!course || !currentCareer) return [];
-    const careerProgress: Record<string, CourseProgress> = {};
-    Object.keys(progress).forEach(key => {
-      if (key.startsWith(`${currentCareer}_`)) {
-        const courseId = key.replace(`${currentCareer}_`, '');
-        careerProgress[courseId] = progress[key];
-      }
-    });
-    return getMissingPrereqs(course, careerProgress, false);
-  }, [course, progress, currentCareer]);
-
-  const missingForFinal = useMemo(() => {
-    if (!course || !currentCareer) return [];
-    const careerProgress: Record<string, CourseProgress> = {};
-    Object.keys(progress).forEach(key => {
-      if (key.startsWith(`${currentCareer}_`)) {
-        const courseId = key.replace(`${currentCareer}_`, '');
-        careerProgress[courseId] = progress[key];
-      }
-    });
-    return getMissingPrereqs(course, careerProgress, true);
-  }, [course, progress, currentCareer]);
 
   const getStatusBadge = () => {
     if (courseProgress.state === "final") {
@@ -118,10 +90,8 @@ export function CourseCard({ id, name, semester, year }: CourseCardProps) {
 
     const careerProgress: Record<string, CourseProgress> = {};
     Object.keys(progress).forEach(key => {
-      if (key.startsWith(`${currentCareer}_`)) {
-        const courseId = key.replace(`${currentCareer}_`, '');
+        const courseId = key.startsWith(`${currentCareer}_`) ? key.replace(`${currentCareer}_`, '') : key;
         careerProgress[courseId] = progress[key];
-      }
     });
 
     switch (newState) {
@@ -292,7 +262,7 @@ export function CourseCard({ id, name, semester, year }: CourseCardProps) {
                   <ul className="prereqs-list">
                     {course.prereqs.allOf.map(prereqId => {
                       const prereqCourse = plan?.courses.find(c => c.id === prereqId);
-                      const prereqKey = currentCareer ? `${currentCareer}_${prereqId}` : prereqId;
+                      const prereqKey = getProgressKey(prereqId);
                       const isCompleted = progress[prereqKey]?.state === "approved" || progress[prereqKey]?.state === "final";
                       return (
                         <li key={prereqId} className={clsx("prereq-item", { completed: isCompleted })}>
@@ -312,7 +282,7 @@ export function CourseCard({ id, name, semester, year }: CourseCardProps) {
                   <ul className="prereqs-list">
                     {course.prereqs.allOf.map(prereqId => {
                       const prereqCourse = plan?.courses.find(c => c.id === prereqId);
-                      const prereqKey = currentCareer ? `${currentCareer}_${prereqId}` : prereqId;
+                      const prereqKey = getProgressKey(prereqId);
                       const isCompleted = progress[prereqKey]?.state === "final";
                       return (
                         <li key={prereqId} className={clsx("prereq-item", { completed: isCompleted })}>

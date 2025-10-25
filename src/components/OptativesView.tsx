@@ -43,9 +43,13 @@ export function OptativesView({
     if (!currentCareer) return {};
     const result: Record<string, CourseProgress> = {};
     Object.keys(progress).forEach(key => {
+      // Incluir materias compartidas (sin prefijo) y de la carrera actual
       if (key.startsWith(`${currentCareer}_`)) {
         const courseId = key.replace(`${currentCareer}_`, '');
         result[courseId] = progress[key];
+      } else if (!key.includes('_')) {
+        // Incluir materias compartidas (las que no tienen prefijo)
+        result[key] = progress[key];
       }
     });
     return result;

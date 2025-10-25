@@ -2498,6 +2498,7 @@ name = "plan-estudios-unlp"
 version = "1.0.0"
 dependencies = [
  "log",
+ "open",
  "serde",
  "serde_json",
  "tauri",

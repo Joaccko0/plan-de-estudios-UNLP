@@ -43,7 +43,7 @@
       { "id": "S0407", "name": "Fundamentos de la Teoría de la Computación", "prereqs": { "allOf": ["SI308", "SI306"] }, "semester": 1, "year": 4 },
       { "id": "SI403", "name": "Sistemas Operativos", "prereqs": { "allOf": ["SI304"] }, "semester": 1, "year": 4 },
       { "id": "SI405", "name": "Bases de Datos 2", "prereqs": { "allOf": ["S0303"] }, "semester": 1, "year": 4 },
-      { "id": "S0406", "name": "Ingeniería de Software 3", "prereqs": { "allOf": ["SI308", "SI202"] }, "semester": 1, "year": 4 },
+      { "id": "S0406", "name": "Ingeniería de Software 3", "prereqs": { "allOf": ["SI308", "SI302"] }, "semester": 1, "year": 4 },
       
       { "id": "S0410", "name": "Sistemas y Organizaciones", "prereqs": { "allOf": ["SI210", "SI202", "SI208"] }, "semester": 2, "year": 4 },
       { "id": "SI409", "name": "Matemática 4", "prereqs": { "allOf": ["SI308"] }, "semester": 2, "year": 4 },

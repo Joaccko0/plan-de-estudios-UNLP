@@ -4,6 +4,7 @@ import { CareerSelector } from "./components/CareerSelector";
 import { CourseCard } from "./components/CourseCard";
 import { StatsPanel } from "./components/StatsPanel";
 import { OptativesView } from "./components/OptativesView";
+import { open } from '@tauri-apps/plugin-shell';
 import "./App.css";
 
 function App() {
@@ -14,6 +15,11 @@ function App() {
     const saved = localStorage.getItem('theme');
     return (saved as 'light' | 'dark') || 'light';
   });
+
+  const handleLinkedInClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    await open('https://www.linkedin.com/in/joaquin-rd/');
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -187,9 +193,8 @@ function App() {
         <p className="author-credit">
           Desarrollado por{" "}
           <a 
-            href="https://www.linkedin.com/in/joaquin-rd/" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="#"
+            onClick={handleLinkedInClick}
           >
             Joaquin Retamoso Doglio
           </a>
@@ -265,9 +270,8 @@ function App() {
         <p>
           🚀 Desarrollado por{" "}
           <a 
-            href="https://www.linkedin.com/in/joaquin-rd/" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="#" 
+            onClick={handleLinkedInClick}
             style={{ color: 'var(--accent)', fontWeight: 'bold', textDecoration: 'none' }}
           >
             Joaquin Retamoso Doglio

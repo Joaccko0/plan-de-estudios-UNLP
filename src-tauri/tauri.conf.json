@@ -9,6 +9,11 @@
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build"
   },
+  "plugins": {
+    "shell": {
+      "open": true
+    }
+  },
   "app": {
     "windows": [
       {
@@ -23,7 +28,7 @@
       }
     ],
     "security": {
-      "csp": null
+      "capabilities": ["default"]
     }
   },
   "bundle": {

@@ -15,8 +15,14 @@ const AVAILABLE_CAREERS: Career[] = [
 ];
 
 export function CareerSelector() {
-  const { currentCareer, setCurrentCareer, setPlan } = usePlanStore();
+  const { currentCareer, setCurrentCareer, setPlan, plan } = usePlanStore();
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (currentCareer && !plan) {
+      handleCareerChange(currentCareer);
+    }
+  }, [currentCareer, plan]);
 
   const handleCareerChange = async (careerId: string) => {
     const career = AVAILABLE_CAREERS.find(c => c.id === careerId);

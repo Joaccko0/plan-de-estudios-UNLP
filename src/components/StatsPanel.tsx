@@ -1,8 +1,13 @@
 import { usePlanStore } from "../store/usePlanStore";
+import { useMemo } from "react";
 
 export function StatsPanel() {
-  const { getStats } = usePlanStore();
-  const stats = getStats();
+  const { progress, currentCareer, selectedOptatives, plan, getStats } = usePlanStore();
+
+  const stats = useMemo(
+    () => getStats(),
+    [progress, currentCareer, selectedOptatives, plan, getStats]
+  );
 
   return (
     <div className="stats-panel">

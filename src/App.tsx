@@ -165,6 +165,21 @@ function App() {
     );
   }
 
+  // Mostrar vista completa de optativas (solo para consulta)
+  if (showOptatives) {
+    return (
+      <div className="app">
+        <OptativesView 
+          onBack={() => setShowOptatives(false)}
+          filterSemester={null}
+          filterYear={null}
+          selectionMode={false}
+          selectedOptatives={getSelectedOptativesForCareer()}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="app">
       <header className="app-header">

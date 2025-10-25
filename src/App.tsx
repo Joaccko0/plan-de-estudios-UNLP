@@ -7,7 +7,7 @@ import { OptativesView } from "./components/OptativesView";
 import "./App.css";
 
 function App() {
-  const { plan, currentCareer, selectedOptatives, selectOptative } = usePlanStore();
+  const { plan, currentCareer, selectedOptatives, selectOptative, setPlan } = usePlanStore();
   const [showOptatives, setShowOptatives] = useState(false);
   const [selectingOptativeFor, setSelectingOptativeFor] = useState<{ year: number; semester: number } | null>(null);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -19,6 +19,31 @@ function App() {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    const loadCareerPlan = async () => {
+      if (currentCareer && !plan) {
+        const AVAILABLE_CAREERS = [
+          { id: "ls", name: "Licenciatura en Sistemas", file: "/careers/sistemas.json" },
+          { id: "is", name: "Licenciatura en Informatica", file: "/careers/informatica.json" },
+          { id: "se", name: "Analista Programador", file: "/careers/analista.json" },
+        ];
+
+        const career = AVAILABLE_CAREERS.find(c => c.id === currentCareer);
+        if (!career) return;
+
+        try {
+          const response = await fetch(career.file);
+          const planData = await response.json();
+          setPlan(planData);
+        } catch (error) {
+          console.error("❌ Error loading career on mount:", error);
+        }
+      }
+    };
+
+    loadCareerPlan();
+  }, [currentCareer, plan, setPlan]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');

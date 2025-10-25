@@ -1,0 +1,49 @@
+{
+    "rules": { 
+      "canEnrollIf": { 
+        "allOf": [] 
+      }, 
+      "canTakeFinalIf": { 
+        "requireFinal": true 
+      } 
+    },
+    "courses": [
+      { "id": "CNE", "name": "Expresión de Problemas y Algoritmos", "prereqs": { "allOf": [] }, "semester": 0, "year": 0 },
+      { "id": "CNC", "name": "Conceptos de Organización de Computadoras", "prereqs": { "allOf": [] }, "semester": 0, "year": 0 },
+      { "id": "CNM", "name": "Matemática 0", "prereqs": { "allOf": [] }, "semester": 0, "year": 0 },
+      
+      { "id": "SI106", "name": "Conceptos de Algoritmos, Datos y Programas", "prereqs": { "allOf": ["CNE"] }, "semester": 1, "year": 1 },
+      { "id": "SI104", "name": "Organización de Computadoras", "prereqs": { "allOf": ["CNC"] }, "semester": 1, "year": 1 },
+      { "id": "SI101", "name": "Matemática 1", "prereqs": { "allOf": ["CNM"] }, "semester": 1, "year": 1 },
+      
+      { "id": "SI107", "name": "Taller de Programación", "prereqs": { "allOf": ["SI106"] }, "semester": 2, "year": 1 },
+      { "id": "SI105", "name": "Arquitectura de Computadoras", "prereqs": { "allOf": ["SI104"] }, "semester": 2, "year": 1 },
+      { "id": "SI102", "name": "Matemática 2", "prereqs": { "allOf": ["SI101"] }, "semester": 2, "year": 1 },
+      
+      { "id": "SI209", "name": "Fundamentos de Organización de Datos", "prereqs": { "allOf": ["SI107"] }, "semester": 1, "year": 2 },
+      { "id": "SI203", "name": "Algoritmos y Estructuras de Datos", "prereqs": { "allOf": ["SI102", "SI107"] }, "semester": 1, "year": 2 },
+      { "id": "SI207", "name": "Seminario de Lenguajes", "prereqs": { "allOf": ["SI107"] }, "semester": 1, "year": 2 },
+      
+      { "id": "SI210", "name": "Diseño de Bases de Datos", "prereqs": { "allOf": ["SI209"] }, "semester": 2, "year": 2 },
+      { "id": "SI202", "name": "Ingeniería de Software 1", "prereqs": { "allOf": ["SI107"] }, "semester": 2, "year": 2 },
+      { "id": "SI206", "name": "Orientación a Objetos 1", "prereqs": { "allOf": ["SI107"] }, "semester": 2, "year": 2 },
+      { "id": "SI204", "name": "Introducción a los Sistemas Operativos", "prereqs": { "allOf": ["SI107", "SI105"] }, "semester": 2, "year": 2 },
+      { "id": "SI208", "name": "Taller de lecto-comprensión y Traducción en Inglés", "prereqs": { "allOf": [] }, "semester": 2, "year": 2 },
+      
+      { "id": "SI308", "name": "Matemática 3", "prereqs": { "allOf": ["SI102"] }, "semester": 1, "year": 3 },
+      { "id": "SI302", "name": "Ingeniería de Software 2", "prereqs": { "allOf": ["SI202", "SI208"] }, "semester": 1, "year": 3 },
+      { "id": "SI307", "name": "Orientación a Objetos 2", "prereqs": { "allOf": ["SI206", "SI208"] }, "semester": 1, "year": 3 },
+      
+      { "id": "SI301", "name": "Programación Concurrente", "prereqs": { "allOf": ["SI204", "SI207", "SI208"] }, "semester": 2, "year": 3 },
+      { "id": "SI305", "name": "Proyecto de Software", "prereqs": { "allOf": ["SI210", "SI202", "SI203", "SI206", "SI207", "SI208"] }, "semester": 2, "year": 3 },
+      { "id": "O7301", "name": "Taller de Tecnologías de Producción de Software", "prereqs": { "allOf": ["SI210", "SI203", "SI204", "SI206", "SI208", "SI302"] }, "semester": 2, "year": 3 }
+      
+    ],
+  
+    "optatives": [
+        { "id": "S0303", "name": "Bases de Datos 1", "prereqs": { "allOf": ["SI210", "SI208"] }, "semester": 2, "year": 3 },
+        { "id": "SI304", "name": "Redes y Comunicaciones", "prereqs": { "allOf": ["SI102", "SI204", "SI208"] }, "semester": 2, "year": 3 },
+        { "id": "SI306", "name": "Conceptos y Paradigmas de Lenguajes de Programación", "prereqs": { "allOf": ["SI203", "SI207", "SI208"] }, "semester": 1, "year": 3 },
+        { "id": "S0410", "name": "Sistemas y Organizaciones", "prereqs": { "allOf": ["SI210", "SI202", "SI208"] }, "semester": 2, "year": 4 }
+    ]
+  }

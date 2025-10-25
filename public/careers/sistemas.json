@@ -1,0 +1,95 @@
+{
+    "rules": { 
+      "canEnrollIf": { 
+        "allOf": [] 
+      }, 
+      "canTakeFinalIf": { 
+        "requireFinal": true 
+      } 
+    },
+    "courses": [
+      { "id": "CNE", "name": "Expresión de Problemas y Algoritmos", "prereqs": { "allOf": [] }, "semester": 0, "year": 0 },
+      { "id": "CNC", "name": "Conceptos de Organización de Computadoras", "prereqs": { "allOf": [] }, "semester": 0, "year": 0 },
+      { "id": "CNM", "name": "Matemática 0", "prereqs": { "allOf": [] }, "semester": 0, "year": 0 },
+      
+      { "id": "SI106", "name": "Conceptos de Algoritmos, Datos y Programas", "prereqs": { "allOf": ["CNE"] }, "semester": 1, "year": 1 },
+      { "id": "SI104", "name": "Organización de Computadoras", "prereqs": { "allOf": ["CNC"] }, "semester": 1, "year": 1 },
+      { "id": "SI101", "name": "Matemática 1", "prereqs": { "allOf": ["CNM"] }, "semester": 1, "year": 1 },
+      
+      { "id": "SI107", "name": "Taller de Programación", "prereqs": { "allOf": ["SI106"] }, "semester": 2, "year": 1 },
+      { "id": "SI105", "name": "Arquitectura de Computadoras", "prereqs": { "allOf": ["SI104"] }, "semester": 2, "year": 1 },
+      { "id": "SI102", "name": "Matemática 2", "prereqs": { "allOf": ["SI101"] }, "semester": 2, "year": 1 },
+      
+      { "id": "SI209", "name": "Fundamentos de Organización de Datos", "prereqs": { "allOf": ["SI107"] }, "semester": 1, "year": 2 },
+      { "id": "SI203", "name": "Algoritmos y Estructuras de Datos", "prereqs": { "allOf": ["SI102", "SI107"] }, "semester": 1, "year": 2 },
+      { "id": "SI207", "name": "Seminario de Lenguajes", "prereqs": { "allOf": ["SI107"] }, "semester": 1, "year": 2 },
+      
+      { "id": "SI210", "name": "Diseño de Bases de Datos", "prereqs": { "allOf": ["SI209"] }, "semester": 2, "year": 2 },
+      { "id": "SI202", "name": "Ingeniería de Software 1", "prereqs": { "allOf": ["SI107"] }, "semester": 2, "year": 2 },
+      { "id": "SI206", "name": "Orientación a Objetos 1", "prereqs": { "allOf": ["SI107"] }, "semester": 2, "year": 2 },
+      { "id": "SI204", "name": "Introducción a los Sistemas Operativos", "prereqs": { "allOf": ["SI107", "SI105"] }, "semester": 2, "year": 2 },
+      { "id": "SI208", "name": "Taller de lecto-comprensión y Traducción en Inglés", "prereqs": { "allOf": [] }, "semester": 2, "year": 2 },
+      
+      { "id": "SI308", "name": "Matemática 3", "prereqs": { "allOf": ["SI102"] }, "semester": 1, "year": 3 },
+      { "id": "SI302", "name": "Ingeniería de Software 2", "prereqs": { "allOf": ["SI202", "SI208"] }, "semester": 1, "year": 3 },
+      { "id": "SI306", "name": "Conceptos y Paradigmas de Lenguajes de Programación", "prereqs": { "allOf": ["SI203", "SI207", "SI208"] }, "semester": 1, "year": 3 },
+      { "id": "SI307", "name": "Orientación a Objetos 2", "prereqs": { "allOf": ["SI206", "SI208"] }, "semester": 1, "year": 3 },
+      
+      { "id": "SI304", "name": "Redes y Comunicaciones", "prereqs": { "allOf": ["SI102", "SI204", "SI208"] }, "semester": 2, "year": 3 },
+      { "id": "SI301", "name": "Programación Concurrente", "prereqs": { "allOf": ["SI204", "SI207", "SI208"] }, "semester": 2, "year": 3 },
+      { "id": "SI305", "name": "Proyecto de Software", "prereqs": { "allOf": ["SI210", "SI202", "SI203", "SI206", "SI207", "SI208"] }, "semester": 2, "year": 3 },
+      { "id": "S0303", "name": "Bases de Datos 1", "prereqs": { "allOf": ["SI210", "SI208"] }, "semester": 2, "year": 3 },
+      
+      { "id": "S0407", "name": "Fundamentos de la Teoría de la Computación", "prereqs": { "allOf": ["SI308", "SI306"] }, "semester": 1, "year": 4 },
+      { "id": "SI403", "name": "Sistemas Operativos", "prereqs": { "allOf": ["SI304"] }, "semester": 1, "year": 4 },
+      { "id": "SI405", "name": "Bases de Datos 2", "prereqs": { "allOf": ["S0303"] }, "semester": 1, "year": 4 },
+      { "id": "S0406", "name": "Ingeniería de Software 3", "prereqs": { "allOf": ["SI308", "SI202"] }, "semester": 1, "year": 4 },
+      
+      { "id": "S0410", "name": "Sistemas y Organizaciones", "prereqs": { "allOf": ["SI210", "SI202", "SI208"] }, "semester": 2, "year": 4 },
+      { "id": "SI409", "name": "Matemática 4", "prereqs": { "allOf": ["SI308"] }, "semester": 2, "year": 4 },
+      { "id": "S0408", "name": "Desarrollo de Software en Sistemas Distribuidos", "prereqs": { "allOf": ["SI301", "S0303", "SI304"] }, "semester": 2, "year": 4 },
+      
+      { "id": "SI504", "name": "Aspectos Sociales y Profesionales de Informática", "prereqs": { "allOf": ["SI305"] }, "semester": 1, "year": 5 },
+      { "id": "SI505", "name": "Aspectos Éticos, Sociales y Profesionales Avanzados de Informática", "prereqs": { "allOf": ["SI305"] }, "semester": 1, "year": 5 }
+    ],
+  
+    "optatives": [
+      { "id": "OPT1", "name": "Calidad en Sistemas de Software", "prereqs": { "allOf": ["SI302"] }, "semester": 2, "year": 4 },
+      { "id": "OPT2", "name": "Cloud Computing y Cloud Robotics", "prereqs": { "allOf": ["SI301"] }, "semester": 2, "year": 4 },
+      { "id": "OPT3", "name": "Conceptos y Aplicaciones de Big Data", "prereqs": { "allOf": ["SI301"] }, "semester": 2, "year": 4 },
+  
+      { "id": "OPT4", "name": "Diseño de Experiencia de Usuario", "prereqs": { "allOf": ["SO406"] }, "semester": 1, "year": 5 },
+      { "id": "OPT5", "name": "Diseño de Interacciones en Aplicaciones Móviles", "prereqs": { "allOf": ["SI202", "SI206", "SI208"] }, "semester": 2, "year": 4 },
+      { "id": "OPT6", "name": "Enfoques para el Desarrollo de Aplicaciones Móviles Multiplataforma", "prereqs": { "allOf": ["SI210", "SI302", "SI307"] }, "semester": 2, "year": 4 },
+      { "id": "OPT7", "name": "Ingeniería de Aplicaciones Web", "prereqs": { "allOf": ["SI307"] }, "semester": 2, "year": 4 },
+  
+      { "id": "OPT8", "name": "Introducción a la Ciberseguridad", "prereqs": { "allOf": ["SI304"] }, "semester": 2, "year": 4 },
+      { "id": "OPT9", "name": "Introducción a la Computación Móvil", "prereqs": { "allOf": ["SI302", "SI304"] }, "semester": 2, "year": 4 },
+      { "id": "OPT10", "name": "Introducción a la Forensia Digital", "prereqs": { "allOf": ["SI403"] }, "semester": 2, "year": 4 },
+  
+      { "id": "OPT11", "name": "Laboratorio de Software", "prereqs": { "allOf": ["SI305"] }, "semester": 2, "year": 4 },
+      { "id": "OPT12", "name": "Lógica e Inteligencia Artificial", "prereqs": { "allOf": ["SI102", "SI306"] }, "semester": 2, "year": 4 },
+      { "id": "OPT13", "name": "Métodos Ágiles para Aplicaciones Web", "prereqs": { "allOf": ["SI302", "SI206", "SI208"] }, "semester": 2, "year": 4 },
+  
+      { "id": "OPT14", "name": "Programación Distribuida y Tiempo Real", "prereqs": { "allOf": ["SI306", "SI304"] }, "semester": 2, "year": 4 },
+      { "id": "OPT15", "name": "Seguridad y Privacidad en Redes", "prereqs": { "allOf": ["SI403", "SI304"] }, "semester": 2, "year": 4 },
+      { "id": "OPT16", "name": "Sistemas Paralelos", "prereqs": { "allOf": ["SI301"] }, "semester": 1, "year": 5 },
+  
+      { "id": "OPT17", "name": "Taller de Programación sobre GPU", "prereqs": { "allOf": ["SI301"] }, "semester": 2, "year": 4 },
+      { "id": "OPT18", "name": "Teoría de la Computación y Verificación de Programas", "prereqs": { "allOf": ["SO407"] }, "semester": 1, "year": 5 },
+      { "id": "OPT19", "name": "Aprendizaje Automático Profundo (Deep Learning)", "prereqs": { "allOf": ["SI203", "SI308"] }, "semester": 2, "year": 4 },
+  
+      { "id": "OPT20", "name": "Desarrollo de Software para Blockchain", "prereqs": { "allOf": ["SI307", "SI204", "SI203"] }, "semester": 2, "year": 4 },
+      { "id": "OPT21", "name": "Desarrollo Seguro de Aplicaciones", "prereqs": { "allOf": ["SI305"] }, "semester": 1, "year": 5 },
+      { "id": "OPT22", "name": "Internet de las Cosas", "prereqs": { "allOf": ["SI305"] }, "semester": 1, "year": 5 },
+  
+      { "id": "OPT23", "name": "Introducción a Blockchain, Criptomonedas y Smart Contracts", "prereqs": { "allOf": ["SI307", "SI204", "SI203"] }, "semester": 1, "year": 5 },
+      { "id": "OPT24", "name": "Java y Aplicaciones Avanzadas sobre Internet", "prereqs": { "allOf": ["SI305"] }, "semester": 1, "year": 5 },
+      { "id": "OPT25", "name": "Minería de Datos usando Sistemas Inteligentes", "prereqs": { "allOf": ["SI203", "SI308"] }, "semester": 1, "year": 5 },
+  
+      { "id": "OPT26", "name": "Patrones de Arquitecturas de Software", "prereqs": { "allOf": ["SI305", "SI307", "SI302"] }, "semester": 1, "year": 5 },
+      { "id": "OPT27", "name": "Tecnología, Ambiente y Sociedad", "prereqs": { "allOf": ["SI304"] }, "semester": 1, "year": 5 },
+      { "id": "OPT28", "name": "Web Semántica y Grafos de Conocimiento", "prereqs": { "allOf": ["SI307", "SI203"] }, "semester": 1, "year": 5 },
+      { "id": "OPT29", "name": "Tecnologías Aplicadas para Business Intelligence", "prereqs": { "allOf": ["SI305"] }, "semester": 2, "year": 4 }
+    ]
+  }
